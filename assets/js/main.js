@@ -34,13 +34,41 @@ revealEls.forEach((el) => revealObserver.observe(el));
 // Footer year
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Contact form (static placeholder — no backend wired up yet)
+// Contact form — submits to Formspree once data-formspree-id is set on the <form>
+// (see README "Activating the contact form"). Falls back to a friendly notice until then.
 const contactForm = document.getElementById("contact-form");
 const formNote = document.getElementById("form-note");
 
-contactForm.addEventListener("submit", (e) => {
+contactForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  formNote.textContent =
-    "Thanks! This form isn't connected to an inbox yet — hook it up to Formspree, Netlify Forms, or a mailto link.";
-  contactForm.reset();
+  const formspreeId = contactForm.dataset.formspreeId;
+  const submitBtn = contactForm.querySelector("button[type=submit]");
+
+  if (!formspreeId) {
+    formNote.textContent =
+      "This form isn't connected to an inbox yet — add a Formspree ID in index.html to activate it (see README).";
+    return;
+  }
+
+  submitBtn.disabled = true;
+  formNote.textContent = "Sending…";
+
+  try {
+    const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: new FormData(contactForm),
+    });
+
+    if (response.ok) {
+      formNote.textContent = "Thanks! Your message has been sent.";
+      contactForm.reset();
+    } else {
+      formNote.textContent = "Something went wrong sending that — please try again.";
+    }
+  } catch {
+    formNote.textContent = "Something went wrong sending that — please try again.";
+  } finally {
+    submitBtn.disabled = false;
+  }
 });
