@@ -34,6 +34,24 @@ revealEls.forEach((el) => revealObserver.observe(el));
 // Footer year
 document.getElementById("year").textContent = new Date().getFullYear();
 
+// Hero timecode readout — counts time on page in HH:MM:SS:FF (24fps), purely decorative
+const timecodeEl = document.getElementById("timecode");
+if (timecodeEl) {
+  const start = performance.now();
+  const pad = (n, len = 2) => String(n).padStart(len, "0");
+
+  setInterval(() => {
+    const elapsedMs = performance.now() - start;
+    const totalFrames = Math.floor(elapsedMs / (1000 / 24));
+    const frames = totalFrames % 24;
+    const totalSeconds = Math.floor(totalFrames / 24);
+    const seconds = totalSeconds % 60;
+    const minutes = Math.floor(totalSeconds / 60) % 60;
+    const hours = Math.floor(totalSeconds / 3600);
+    timecodeEl.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}:${pad(frames)}`;
+  }, 1000 / 24);
+}
+
 // Contact form — submits to Formspree once data-formspree-id is set on the <form>
 // (see README "Activating the contact form"). Falls back to a friendly notice until then.
 const contactForm = document.getElementById("contact-form");
