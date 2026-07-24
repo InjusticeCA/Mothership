@@ -23,6 +23,13 @@ const revealObserver = new IntersectionObserver(
       if (entry.isIntersecting) {
         entry.target.classList.add("is-visible");
         revealObserver.unobserve(entry.target);
+
+        // Each roadmap step fills the connector segment leading into it
+        const step = Number(entry.target.dataset.step);
+        if (step > 1) {
+          const connector = document.querySelector(`[data-connector="${step - 1}"]`);
+          if (connector) connector.classList.add("is-filled");
+        }
       }
     });
   },
@@ -30,6 +37,41 @@ const revealObserver = new IntersectionObserver(
 );
 
 revealEls.forEach((el) => revealObserver.observe(el));
+
+// Scroll progress bar — fills like a render/export bar as you move down the page
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const scrollProgressFill = document.getElementById("scroll-progress-fill");
+const heroGlow = document.getElementById("hero-glow");
+
+if (scrollProgressFill) {
+  let ticking = false;
+
+  const updateOnScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+    scrollProgressFill.style.transform = `scaleX(${progress})`;
+
+    if (heroGlow && !prefersReducedMotion) {
+      heroGlow.style.transform = `translateY(${Math.min(scrollTop * 0.15, 60)}px)`;
+    }
+
+    ticking = false;
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        requestAnimationFrame(updateOnScroll);
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
+
+  updateOnScroll();
+}
 
 // Footer year
 document.getElementById("year").textContent = new Date().getFullYear();

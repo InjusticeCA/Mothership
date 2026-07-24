@@ -25,6 +25,10 @@
 
 <div class="noise-overlay" aria-hidden="true"></div>
 
+<div class="scroll-progress" aria-hidden="true">
+  <div class="scroll-progress-fill" id="scroll-progress-fill"></div>
+</div>
+
 <header class="site-header" id="top">
   <div class="container header-inner">
     <a href="#top" class="logo">COLE<span>ALLEN</span></a>
@@ -45,29 +49,69 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-glow" id="hero-glow" aria-hidden="true"></div>
     <div class="container hero-inner">
-      <p class="eyebrow reveal">Currently editing for Loadedwombat</p>
-      <h1 class="reveal">
-        I cut Loadedwombat's videos. I run his socials. I can do the same for <span class="highlight">you</span>.
-      </h1>
-      <p class="hero-sub reveal">
-        No agency fluff — just someone who edits daily, manages a small team, and keeps a
-        posting calendar alive so your channel doesn't go quiet.
-      </p>
-      <div class="hero-actions reveal">
-        <a href="#work" class="btn btn-primary">See the Work</a>
-        <a href="#contact" class="btn btn-ghost">Book a Call</a>
+      <div class="hero-copy">
+        <p class="eyebrow reveal">Currently editing for Loadedwombat</p>
+        <h1 class="reveal">
+          I cut Loadedwombat's videos. I run his socials. I can do the same for <span class="highlight">you</span>.
+        </h1>
+        <p class="hero-sub reveal">
+          No agency fluff — just someone who edits daily, manages a small team, and keeps a
+          posting calendar alive so your channel doesn't go quiet.
+        </p>
+        <div class="hero-actions reveal">
+          <a href="#work" class="btn btn-primary">See the Work</a>
+          <a href="#contact" class="btn btn-ghost">Book a Call</a>
+        </div>
+
+        <!-- Decorative timecode readout — counts time on page, not a real production stat -->
+        <div class="hero-timeline reveal" aria-hidden="true">
+          <div class="timeline-bar">
+            <div class="timeline-progress"></div>
+            <div class="timeline-playhead"></div>
+          </div>
+          <div class="timeline-meta">
+            <span class="timeline-code" id="timecode">00:00:00:00</span>
+            <span class="timeline-label">Time on this page</span>
+          </div>
+        </div>
       </div>
 
-      <!-- Decorative timecode readout — counts time on page, not a real production stat -->
-      <div class="hero-timeline reveal" aria-hidden="true">
-        <div class="timeline-bar">
-          <div class="timeline-progress"></div>
-          <div class="timeline-playhead"></div>
-        </div>
-        <div class="timeline-meta">
-          <span class="timeline-code" id="timecode">00:00:00:00</span>
-          <span class="timeline-label">Time on this page</span>
+      <!-- Decorative waveform graphic — not a real audio reading -->
+      <div class="waveform-card reveal" id="hero-waveform" aria-hidden="true">
+        <span class="waveform-label"><span class="rec-dot"></span> Now cutting — ep. next</span>
+        <div class="waveform">
+          <div class="wave-bar" style="height:18%"></div>
+          <div class="wave-bar" style="height:42%"></div>
+          <div class="wave-bar" style="height:65%"></div>
+          <div class="wave-bar" style="height:30%"></div>
+          <div class="wave-bar" style="height:55%"></div>
+          <div class="wave-bar" style="height:80%"></div>
+          <div class="wave-bar" style="height:45%"></div>
+          <div class="wave-bar" style="height:25%"></div>
+          <div class="wave-bar" style="height:60%"></div>
+          <div class="wave-bar" style="height:90%"></div>
+          <div class="wave-bar" style="height:50%"></div>
+          <div class="wave-bar" style="height:35%"></div>
+          <div class="wave-bar" style="height:70%"></div>
+          <div class="wave-bar" style="height:20%"></div>
+          <div class="wave-bar" style="height:58%"></div>
+          <div class="wave-bar" style="height:85%"></div>
+          <div class="wave-bar" style="height:40%"></div>
+          <div class="wave-bar" style="height:28%"></div>
+          <div class="wave-bar" style="height:66%"></div>
+          <div class="wave-bar" style="height:95%"></div>
+          <div class="wave-bar" style="height:52%"></div>
+          <div class="wave-bar" style="height:33%"></div>
+          <div class="wave-bar" style="height:72%"></div>
+          <div class="wave-bar" style="height:22%"></div>
+          <div class="wave-bar" style="height:60%"></div>
+          <div class="wave-bar" style="height:88%"></div>
+          <div class="wave-bar" style="height:46%"></div>
+          <div class="wave-bar" style="height:30%"></div>
+          <div class="wave-bar" style="height:64%"></div>
+          <div class="wave-bar" style="height:92%"></div>
         </div>
       </div>
     </div>
@@ -192,32 +236,60 @@
     </div>
   </section>
 
-  <!-- PROCESS -->
+  <!-- PROCESS / ROADMAP -->
   <section class="process" id="process">
     <div class="container">
       <p class="eyebrow reveal">How it actually goes</p>
-      <h2 class="section-title reveal">From footage to feed</h2>
+      <h2 class="section-title reveal">From inbound message to delivered edit</h2>
+      <p class="section-sub reveal">No black box. Here's exactly what happens after you reach out.</p>
 
-      <div class="process-grid">
-        <div class="process-step reveal">
-          <span class="process-num">01</span>
-          <h3>Discovery Call</h3>
-          <p>We talk goals, channel style, and where editing or social management is currently falling short.</p>
+      <div class="roadmap">
+        <div class="roadmap-step reveal" data-step="1">
+          <div class="roadmap-node" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 13V6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v7" stroke="currentColor" stroke-width="1.5"/><path d="M4 13h4.5a1 1 0 0 1 .9.55l.7 1.4a1 1 0 0 0 .9.55h2a1 1 0 0 0 .9-.55l.7-1.4a1 1 0 0 1 .9-.55H20" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M4 13v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <span class="roadmap-num">01 — Inbound</span>
+          <h3>Work comes in</h3>
+          <p>A call, a DM, an email — someone needs an editor or a hand with their socials. I get back to you fast, not in three business days.</p>
         </div>
-        <div class="process-step reveal">
-          <span class="process-num">02</span>
-          <h3>Content Strategy</h3>
-          <p>I map a posting cadence and content plan across long-form and short-form so nothing's random.</p>
+
+        <div class="roadmap-connector" aria-hidden="true" data-connector="1">
+          <div class="roadmap-connector-fill"></div>
         </div>
-        <div class="process-step reveal">
-          <span class="process-num">03</span>
-          <h3>Edit &amp; Produce</h3>
-          <p>Footage becomes finished video — cut, graded, sound-designed, and clipped for every platform it needs to live on.</p>
+
+        <div class="roadmap-step reveal" data-step="2">
+          <div class="roadmap-node" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M20 20l-4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <span class="roadmap-num">02 — Scope</span>
+          <h3>I jump on it</h3>
+          <p>I find out exactly what the channel needs — a single edit, a full posting calendar, or everything in between — and scope it to fit, not a fixed package.</p>
         </div>
-        <div class="process-step reveal">
-          <span class="process-num">04</span>
-          <h3>Post &amp; Grow</h3>
-          <p>My team handles scheduling, captions, and community upkeep while we track what's actually growing the channel.</p>
+
+        <div class="roadmap-connector" aria-hidden="true" data-connector="2">
+          <div class="roadmap-connector-fill"></div>
+        </div>
+
+        <div class="roadmap-step reveal" data-step="3">
+          <div class="roadmap-node" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="12" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="15" cy="12" r="6" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <span class="roadmap-num">03 — Collaborate</span>
+          <h3>We work hand in hand</h3>
+          <p>Check-ins, revisions, footage turning into something that actually sounds like your channel — not a template applied to your clips.</p>
+        </div>
+
+        <div class="roadmap-connector" aria-hidden="true" data-connector="3">
+          <div class="roadmap-connector-fill"></div>
+        </div>
+
+        <div class="roadmap-step reveal" data-step="4">
+          <div class="roadmap-node" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 8l9-5 9 5-9 5-9-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M3 8v8l9 5 9-5V8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 13v8" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <span class="roadmap-num">04 — Deliver</span>
+          <h3>Quality, on the wants and needs you set</h3>
+          <p>Finished pieces ship matched to what you actually asked for — then we refine the process together as the channel keeps growing.</p>
         </div>
       </div>
     </div>
@@ -226,8 +298,32 @@
   <!-- ABOUT -->
   <section class="about" id="about">
     <div class="container about-inner">
-      <div class="about-visual reveal" aria-hidden="true">
-        <div class="about-visual-block"></div>
+      <div class="about-visual" aria-hidden="true">
+        <div class="about-visual-block reveal" id="about-waveform">
+          <span class="waveform-label"><span class="rec-dot"></span> On the clock</span>
+          <div class="waveform">
+            <div class="wave-bar" style="height:30%"></div>
+            <div class="wave-bar" style="height:55%"></div>
+            <div class="wave-bar" style="height:20%"></div>
+            <div class="wave-bar" style="height:70%"></div>
+            <div class="wave-bar" style="height:45%"></div>
+            <div class="wave-bar" style="height:85%"></div>
+            <div class="wave-bar" style="height:35%"></div>
+            <div class="wave-bar" style="height:60%"></div>
+            <div class="wave-bar" style="height:25%"></div>
+            <div class="wave-bar" style="height:75%"></div>
+            <div class="wave-bar" style="height:50%"></div>
+            <div class="wave-bar" style="height:90%"></div>
+            <div class="wave-bar" style="height:40%"></div>
+            <div class="wave-bar" style="height:65%"></div>
+            <div class="wave-bar" style="height:22%"></div>
+            <div class="wave-bar" style="height:58%"></div>
+            <div class="wave-bar" style="height:80%"></div>
+            <div class="wave-bar" style="height:33%"></div>
+            <div class="wave-bar" style="height:68%"></div>
+            <div class="wave-bar" style="height:95%"></div>
+          </div>
+        </div>
       </div>
       <div class="about-copy reveal">
         <p class="eyebrow">About</p>
