@@ -24,10 +24,11 @@ const revealObserver = new IntersectionObserver(
         entry.target.classList.add("is-visible");
         revealObserver.unobserve(entry.target);
 
-        // Each roadmap step fills the connector segment leading into it
+        // Each roadmap step fills the mobile connector segment leading into it
+        // (desktop's SVG elbow lines are driven continuously by scroll position instead)
         const step = Number(entry.target.dataset.step);
         if (step > 1) {
-          const connector = document.querySelector(`[data-connector="${step - 1}"]`);
+          const connector = document.querySelector(`.roadmap-connector[data-connector="${step - 1}"]`);
           if (connector) connector.classList.add("is-filled");
         }
       }
@@ -42,6 +43,45 @@ revealEls.forEach((el) => revealObserver.observe(el));
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const scrollProgressFill = document.getElementById("scroll-progress-fill");
 const heroGlow = document.getElementById("hero-glow");
+const processGlow = document.getElementById("process-glow");
+
+// Roadmap elbow lines (desktop only) — geometry computed in real pixels (not a stretched
+// viewBox) so the curve renders cleanly, then drawn in continuously by scroll position.
+let elbowState = [];
+
+function layoutElbows() {
+  const corner = 28;
+
+  document.querySelectorAll(".roadmap-elbow").forEach((svg) => {
+    const rect = svg.getBoundingClientRect();
+    const w = rect.width;
+    const h = rect.height;
+    if (!w || !h) return;
+
+    svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+    const d =
+      svg.dataset.direction === "right"
+        ? `M0,0 L0,${h - corner} Q0,${h} ${corner},${h} L${w},${h}`
+        : `M${w},0 L${w},${h - corner} Q${w},${h} ${w - corner},${h} L0,${h}`;
+
+    svg.querySelectorAll("path").forEach((p) => p.setAttribute("d", d));
+  });
+
+  elbowState = Array.from(document.querySelectorAll(".elbow-fill")).map((path) => {
+    const length = path.getTotalLength();
+    path.style.strokeDasharray = String(length);
+    path.style.strokeDashoffset = prefersReducedMotion ? "0" : String(length);
+    return { path, length };
+  });
+}
+
+layoutElbows();
+
+let resizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(layoutElbows, 200);
+});
 
 if (scrollProgressFill) {
   let ticking = false;
@@ -52,8 +92,23 @@ if (scrollProgressFill) {
     const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
     scrollProgressFill.style.transform = `scaleX(${progress})`;
 
-    if (heroGlow && !prefersReducedMotion) {
-      heroGlow.style.transform = `translateY(${Math.min(scrollTop * 0.15, 60)}px)`;
+    if (!prefersReducedMotion) {
+      if (heroGlow) {
+        heroGlow.style.transform = `translateY(${Math.min(scrollTop * 0.15, 60)}px)`;
+      }
+      if (processGlow) {
+        const rect = processGlow.getBoundingClientRect();
+        const sectionProgress = Math.min(Math.max((window.innerHeight - rect.top) / (rect.height + window.innerHeight), 0), 1);
+        processGlow.style.transform = `translateY(${sectionProgress * 120 - 40}px)`;
+      }
+
+      // Draw each elbow line in as its bounding box scrolls through the viewport
+      elbowState.forEach(({ path, length }) => {
+        const svg = path.ownerSVGElement;
+        const rect = svg.getBoundingClientRect();
+        const drawProgress = Math.min(Math.max((window.innerHeight * 0.85 - rect.top) / rect.height, 0), 1);
+        path.style.strokeDashoffset = String(length * (1 - drawProgress));
+      });
     }
 
     ticking = false;
