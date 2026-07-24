@@ -15,14 +15,22 @@
 <meta name="twitter:title" content="Cole Allen — Video Editing & Social Growth" />
 <meta name="twitter:description" content="I edit Loadedwombat's videos and run his socials. I can do the same for you." />
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%233f8cff%22>C</text></svg>" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23ff2e93%22>C</text></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 
+<div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+<div class="blob-field" aria-hidden="true">
+  <div class="blob blob--1"></div>
+  <div class="blob blob--2"></div>
+  <div class="blob blob--3"></div>
+</div>
 <div class="noise-overlay" aria-hidden="true"></div>
 
 <div class="scroll-progress" aria-hidden="true">
@@ -30,7 +38,7 @@
 </div>
 
 <header class="site-header" id="top">
-  <div class="container header-inner">
+  <div class="header-inner">
     <a href="#top" class="logo">COLE<span>ALLEN</span></a>
     <nav class="main-nav" id="main-nav">
       <a href="#services">Services</a>
@@ -45,75 +53,67 @@
   </div>
 </header>
 
+<div class="social-dock" id="social-dock" aria-hidden="true">
+  <div class="dock-line"></div>
+  <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+  <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5.5" width="19" height="13" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 9.5l5 2.5-5 2.5v-5z" fill="currentColor"/></svg></a>
+  <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M14 3c.3 2.5 2 4.3 4.5 4.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+  <div class="dock-line"></div>
+</div>
+
 <main>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-glow" id="hero-glow" aria-hidden="true"></div>
     <div class="container hero-inner">
       <div class="hero-copy">
         <p class="eyebrow reveal">Currently editing for Loadedwombat</p>
-        <h1 class="reveal">
-          I cut Loadedwombat's videos. I run his socials. I can do the same for <span class="highlight">you</span>.
-        </h1>
+        <h1 class="reveal">I cut <span class="gradient-text">Loadedwombat's</span> videos. I run his socials. I can do the same for you.</h1>
         <p class="hero-sub reveal">
           No agency fluff — just someone who edits daily, manages a small team, and keeps a
           posting calendar alive so your channel doesn't go quiet.
         </p>
         <div class="hero-actions reveal">
-          <a href="#work" class="btn btn-primary">See the Work</a>
-          <a href="#contact" class="btn btn-ghost">Book a Call</a>
+          <a href="#work" class="btn btn-primary" data-magnetic>See the Work</a>
+          <a href="#contact" class="btn btn-ghost" data-magnetic>Book a Call</a>
         </div>
-
-        <!-- Decorative timecode readout — counts time on page, not a real production stat -->
-        <div class="hero-timeline reveal" aria-hidden="true">
-          <div class="timeline-bar">
-            <div class="timeline-progress"></div>
-            <div class="timeline-playhead"></div>
-          </div>
-          <div class="timeline-meta">
-            <span class="timeline-code" id="timecode">00:00:00:00</span>
-            <span class="timeline-label">Time on this page</span>
-          </div>
+        <div class="hero-quickstats reveal">
+          <div class="hero-quickstat"><span class="num" data-count="6">0</span><span class="label">Team size</span></div>
+          <div class="hero-quickstat"><span class="num" data-count="1">0</span><span class="label">Full-time client</span></div>
+          <div class="hero-quickstat"><span class="num" data-count="2">0</span><span class="label">Disciplines</span></div>
         </div>
       </div>
 
-      <!-- Decorative waveform graphic — not a real audio reading -->
-      <div class="waveform-card reveal" id="hero-waveform" aria-hidden="true">
-        <span class="waveform-label"><span class="rec-dot"></span> Now cutting — ep. next</span>
-        <div class="waveform">
-          <div class="wave-bar" style="height:18%"></div>
-          <div class="wave-bar" style="height:42%"></div>
-          <div class="wave-bar" style="height:65%"></div>
-          <div class="wave-bar" style="height:30%"></div>
-          <div class="wave-bar" style="height:55%"></div>
-          <div class="wave-bar" style="height:80%"></div>
-          <div class="wave-bar" style="height:45%"></div>
-          <div class="wave-bar" style="height:25%"></div>
-          <div class="wave-bar" style="height:60%"></div>
-          <div class="wave-bar" style="height:90%"></div>
-          <div class="wave-bar" style="height:50%"></div>
-          <div class="wave-bar" style="height:35%"></div>
-          <div class="wave-bar" style="height:70%"></div>
-          <div class="wave-bar" style="height:20%"></div>
-          <div class="wave-bar" style="height:58%"></div>
-          <div class="wave-bar" style="height:85%"></div>
-          <div class="wave-bar" style="height:40%"></div>
-          <div class="wave-bar" style="height:28%"></div>
-          <div class="wave-bar" style="height:66%"></div>
-          <div class="wave-bar" style="height:95%"></div>
-          <div class="wave-bar" style="height:52%"></div>
-          <div class="wave-bar" style="height:33%"></div>
-          <div class="wave-bar" style="height:72%"></div>
-          <div class="wave-bar" style="height:22%"></div>
-          <div class="wave-bar" style="height:60%"></div>
-          <div class="wave-bar" style="height:88%"></div>
-          <div class="wave-bar" style="height:46%"></div>
-          <div class="wave-bar" style="height:30%"></div>
-          <div class="wave-bar" style="height:64%"></div>
-          <div class="wave-bar" style="height:92%"></div>
+      <div class="hero-visual reveal-scale" id="hero-visual" aria-hidden="true">
+        <div class="avatar-ring"></div>
+        <div class="avatar-ring avatar-ring--2"></div>
+        <div class="avatar-core">
+          <span class="avatar-initials">CA</span>
         </div>
+        <div class="float-chip float-chip--1" data-depth="30"><div class="float-chip-inner"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <div class="float-chip float-chip--2" data-depth="50"><div class="float-chip-inner"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M17 10l4-2.5v9L17 14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div></div>
+        <div class="float-chip float-chip--3" data-depth="40"><div class="float-chip-inner"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h2l2-6 3 12 2-9 2 5h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="float-chip float-chip--4" data-depth="60"><div class="float-chip-inner"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M12 4v8l6 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div></div>
+        <div class="float-chip float-chip--5" data-depth="25"><div class="float-chip-inner"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l12-4v12a3 3 0 1 1-2-2.8V8.5L8 11.4V17a3 3 0 1 1-2-2.8V9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div></div>
       </div>
+    </div>
+  </section>
+
+  <!-- TOOLS MARQUEE -->
+  <section class="tools" aria-label="Tools I use">
+    <div class="tools-track" aria-hidden="true">
+      <div class="tool-chip"><span class="tool-badge" style="background:#00005b">Pr</span><span class="name">Premiere Pro</span></div>
+      <div class="tool-chip"><span class="tool-badge" style="background:#00005b">Ae</span><span class="name">After Effects</span></div>
+      <div class="tool-chip"><span class="tool-badge" style="background:#333">Da</span><span class="name">DaVinci Resolve</span></div>
+      <div class="tool-chip"><span class="tool-badge" style="background:#000">Cc</span><span class="name">CapCut</span></div>
+      <div class="tool-chip"><span class="tool-badge" style="background:#001e36">Ps</span><span class="name">Photoshop</span></div>
+      <div class="tool-chip"><span class="tool-badge" style="background:#00005b">Au</span><span class="name">Audition</span></div>
+      <div class="tool-chip"><span class="tool-badge" style="background:#00005b">Pr</span><span class="name">Premiere Pro</span></div>
+      <div class="tool-chip"><span class="tool-badge" style="background:#00005b">Ae</span><span class="name">After Effects</span></div>
+      <div class="tool-chip"><span class="tool-badge" style="background:#333">Da</span><span class="name">DaVinci Resolve</span></div>
+      <div class="tool-chip"><span class="tool-badge" style="background:#000">Cc</span><span class="name">CapCut</span></div>
+      <div class="tool-chip"><span class="tool-badge" style="background:#001e36">Ps</span><span class="name">Photoshop</span></div>
+      <div class="tool-chip"><span class="tool-badge" style="background:#00005b">Au</span><span class="name">Audition</span></div>
     </div>
   </section>
 
@@ -147,43 +147,49 @@
       <p class="section-sub reveal">Hire me for one piece of the pipeline, or hand over the whole thing.</p>
 
       <div class="services-grid">
-        <div class="service-card reveal">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.5"/><path d="M9 9.5v5l4.5-2.5L9 9.5z" fill="currentColor"/></svg>
+        <div class="tilt-card reveal" data-tilt>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.5"/><path d="M9 9.5v5l4.5-2.5L9 9.5z" fill="currentColor"/></svg>
+            </div>
+            <h3>Video Editing</h3>
+            <p>I cut long-form YouTube videos — pacing, sound design, graphics, the whole pass. The kind of edit where you don't notice the cuts, you just keep watching.</p>
+            <ul>
+              <li>Full YouTube video edits</li>
+              <li>Thumbnails &amp; title support</li>
+              <li>Sound design &amp; color pass</li>
+            </ul>
           </div>
-          <h3>Video Editing</h3>
-          <p>I cut long-form YouTube videos — pacing, sound design, graphics, the whole pass. The kind of edit where you don't notice the cuts, you just keep watching.</p>
-          <ul>
-            <li>Full YouTube video edits</li>
-            <li>Thumbnails &amp; title support</li>
-            <li>Sound design &amp; color pass</li>
-          </ul>
         </div>
 
-        <div class="service-card reveal">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none"><rect x="7" y="3" width="10" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M11 18h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="tilt-card reveal" data-tilt>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="7" y="3" width="10" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M11 18h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Short-Form &amp; Social Clips</h3>
+            <p>Long videos get chopped into Shorts, Reels, and TikToks — hook in the first second, captions burned in, sized right for each app. Not just a re-export.</p>
+            <ul>
+              <li>Clipping &amp; repurposing</li>
+              <li>Platform-native captions</li>
+              <li>Hook-first editing</li>
+            </ul>
           </div>
-          <h3>Short-Form &amp; Social Clips</h3>
-          <p>Long videos get chopped into Shorts, Reels, and TikToks — hook in the first second, captions burned in, sized right for each app. Not just a re-export.</p>
-          <ul>
-            <li>Clipping &amp; repurposing</li>
-            <li>Platform-native captions</li>
-            <li>Hook-first editing</li>
-          </ul>
         </div>
 
-        <div class="service-card reveal">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none"><circle cx="7" cy="7" r="2.5" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="7" r="2.5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="17" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M9 8.5l2 6.5M15 8.5l-2 6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+        <div class="tilt-card reveal" data-tilt>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="7" cy="7" r="2.5" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="7" r="2.5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="17" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M9 8.5l2 6.5M15 8.5l-2 6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <h3>Social Media Management</h3>
+            <p>I run the actual posting calendar — scheduling, captions, replying to comments, and keeping a small team on the same page so nothing gets missed.</p>
+            <ul>
+              <li>Posting calendar &amp; scheduling</li>
+              <li>Team coordination</li>
+              <li>Growth &amp; strategy check-ins</li>
+            </ul>
           </div>
-          <h3>Social Media Management</h3>
-          <p>I run the actual posting calendar — scheduling, captions, replying to comments, and keeping a small team on the same page so nothing gets missed.</p>
-          <ul>
-            <li>Posting calendar &amp; scheduling</li>
-            <li>Team coordination</li>
-            <li>Growth &amp; strategy check-ins</li>
-          </ul>
         </div>
       </div>
     </div>
@@ -197,41 +203,47 @@
       <p class="section-sub reveal">One long-running relationship, plus room to grow — more case studies going up as I finish them.</p>
 
       <div class="work-grid">
-        <article class="work-card work-card--featured reveal">
-          <div class="work-thumb work-thumb--featured">
-            <span class="work-tag">Flagship Client</span>
-            <div class="play-btn" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <div class="tilt-card work-card--featured" data-tilt>
+          <article class="work-card work-card--featured reveal">
+            <div class="work-thumb work-thumb--featured">
+              <span class="work-tag">Flagship Client</span>
+              <div class="play-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </div>
             </div>
-          </div>
-          <div class="work-body">
-            <h3>Loadedwombat</h3>
-            <p>Ongoing editing &amp; social media management for content creator Loadedwombat — full-time edit turnaround plus a 5–6 person team handling posting, clipping, and day-to-day social operations.</p>
-            <span class="work-meta">Video Editing · Short-Form · Social Management</span>
-          </div>
-        </article>
+            <div class="work-body">
+              <h3>Loadedwombat</h3>
+              <p>Ongoing editing &amp; social media management for content creator Loadedwombat — full-time edit turnaround plus a 5–6 person team handling posting, clipping, and day-to-day social operations.</p>
+              <span class="work-meta">Video Editing · Short-Form · Social Management</span>
+            </div>
+          </article>
+        </div>
 
         <!-- EDIT ME: replace this placeholder card with a real project (see README "Adding portfolio work") -->
-        <article class="work-card work-card--placeholder reveal">
-          <div class="work-thumb">
-            <span class="work-tag work-tag--muted">Add project</span>
-          </div>
-          <div class="work-body">
-            <h3>Your next project</h3>
-            <p>Slot reserved for the next case study — drop in a video link, thumbnail, and a short write-up.</p>
-          </div>
-        </article>
+        <div class="tilt-card" data-tilt>
+          <article class="work-card work-card--placeholder reveal">
+            <div class="work-thumb">
+              <span class="work-tag work-tag--muted">Add project</span>
+            </div>
+            <div class="work-body">
+              <h3>Your next project</h3>
+              <p>Slot reserved for the next case study — drop in a video link, thumbnail, and a short write-up.</p>
+            </div>
+          </article>
+        </div>
 
         <!-- EDIT ME: replace this placeholder card with a real project (see README "Adding portfolio work") -->
-        <article class="work-card work-card--placeholder reveal">
-          <div class="work-thumb">
-            <span class="work-tag work-tag--muted">Add project</span>
-          </div>
-          <div class="work-body">
-            <h3>Your next project</h3>
-            <p>Slot reserved for the next case study — drop in a video link, thumbnail, and a short write-up.</p>
-          </div>
-        </article>
+        <div class="tilt-card" data-tilt>
+          <article class="work-card work-card--placeholder reveal">
+            <div class="work-thumb">
+              <span class="work-tag work-tag--muted">Add project</span>
+            </div>
+            <div class="work-body">
+              <h3>Your next project</h3>
+              <p>Slot reserved for the next case study — drop in a video link, thumbnail, and a short write-up.</p>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </section>
@@ -368,7 +380,7 @@
           coordination, and ownership of a creator's entire online presence — not just the videos,
           but the system behind them. This site is still growing, same as the client roster.
         </p>
-        <a href="#contact" class="btn btn-primary">Work With Me</a>
+        <a href="#contact" class="btn btn-primary" data-magnetic>Work With Me</a>
       </div>
     </div>
   </section>
@@ -427,7 +439,7 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="5" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Send Message</button>
+        <button type="submit" class="btn btn-primary" data-magnetic>Send Message</button>
         <p class="form-note" id="form-note"></p>
       </form>
     </div>
