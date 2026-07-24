@@ -694,10 +694,11 @@ h1, h2, h3 {
   .roadmap-step:last-child { min-height: 56px; }
 
   .roadmap-node-wrap { position: absolute; top: 0; z-index: 2; }
-  .roadmap-step:nth-child(odd) .roadmap-node-wrap { left: 0; }
-  .roadmap-step:nth-child(even) .roadmap-node-wrap { right: 0; }
+  .roadmap-step--left .roadmap-node-wrap { left: 0; }
+  .roadmap-step--right .roadmap-node-wrap { right: 0; }
 
-  /* Small pointer triangle on the node, aimed at its content — echoes the play-button motif */
+  /* Small pointer triangle on the node, aimed at its content — echoes the play-button motif.
+     Content starts flush with the triangle's tip so the two visually connect with no gap. */
   .roadmap-node-wrap::after {
     content: "";
     position: absolute;
@@ -708,28 +709,28 @@ h1, h2, h3 {
     border-bottom: 7px solid transparent;
     transform: translateY(-50%);
   }
-  .roadmap-step:nth-child(odd) .roadmap-node-wrap::after {
+  .roadmap-step--left .roadmap-node-wrap::after {
     left: 100%;
-    border-left: 9px solid var(--border);
+    border-left: 10px solid var(--border);
   }
-  .roadmap-step:nth-child(even) .roadmap-node-wrap::after {
+  .roadmap-step--right .roadmap-node-wrap::after {
     right: 100%;
-    border-right: 9px solid var(--border);
+    border-right: 10px solid var(--border);
   }
-  .roadmap-step.is-visible:nth-child(odd) .roadmap-node-wrap::after { border-left-color: var(--accent); }
-  .roadmap-step.is-visible:nth-child(even) .roadmap-node-wrap::after { border-right-color: var(--accent); }
+  .roadmap-step.is-visible.roadmap-step--left .roadmap-node-wrap::after { border-left-color: var(--accent); }
+  .roadmap-step.is-visible.roadmap-step--right .roadmap-node-wrap::after { border-right-color: var(--accent); }
 
   .roadmap-content {
     position: absolute;
     top: 2px;
     max-width: 420px;
   }
-  .roadmap-step:nth-child(odd) .roadmap-content { left: 88px; }
-  .roadmap-step:nth-child(even) .roadmap-content { right: 88px; }
+  .roadmap-step--left .roadmap-content { left: 66px; }
+  .roadmap-step--right .roadmap-content { right: 66px; }
 
   .roadmap-elbow { position: absolute; top: 56px; height: 232px; width: calc(100% - 56px); overflow: visible; }
-  .roadmap-step:nth-child(odd) .roadmap-elbow { left: 28px; }
-  .roadmap-step:nth-child(even) .roadmap-elbow { right: 28px; }
+  .roadmap-step--left .roadmap-elbow { left: 28px; }
+  .roadmap-step--right .roadmap-elbow { right: 28px; }
 
   .elbow-track, .elbow-fill {
     fill: none;
