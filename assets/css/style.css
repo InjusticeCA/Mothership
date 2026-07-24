@@ -1,15 +1,15 @@
 /* ============ Design Tokens ============ */
 :root {
-  --bg: #0c0a08;
-  --bg-alt: #171310;
-  --surface: #1b1611;
-  --surface-hover: #221b14;
+  --bg: #09090f;
+  --bg-alt: #12121c;
+  --surface: #15151f;
+  --surface-hover: #1c1c2a;
   --border: rgba(255, 255, 255, 0.09);
-  --text: #f4efe6;
-  --text-muted: #a89e8f;
-  --accent: #ff6a3d;
-  --accent-ink: #1a0f07;
-  --accent-2: #2bb3a3;
+  --text: #f2f2f7;
+  --text-muted: #9a9aac;
+  --accent: #3f8cff;
+  --accent-ink: #071022;
+  --accent-2: #8b5cf6;
   --radius: 6px;
   --font-display: "Bebas Neue", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -135,7 +135,7 @@ h1, h2, h3 {
   color: var(--accent-ink);
 }
 
-.btn-primary:hover { background: #ff8259; }
+.btn-primary:hover { background: #5fa0ff; }
 
 .btn-ghost {
   background: transparent;
@@ -165,7 +165,7 @@ h1, h2, h3 {
   right: 0;
   z-index: 100;
   backdrop-filter: blur(14px);
-  background: rgba(12, 10, 8, 0.72);
+  background: rgba(9, 9, 15, 0.72);
   border-bottom: 1px solid var(--border);
 }
 
@@ -205,7 +205,7 @@ h1, h2, h3 {
   padding: 10px 16px;
   border-radius: var(--radius);
 }
-.nav-cta:hover { background: #ff8259; }
+.nav-cta:hover { background: #5fa0ff; }
 
 .nav-toggle {
   display: none;
@@ -236,7 +236,7 @@ h1, h2, h3 {
 .hero-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(55% 45% at 30% 0%, rgba(255, 106, 61, 0.12), transparent 70%);
+  background: radial-gradient(55% 45% at 30% 0%, rgba(63, 140, 255, 0.12), transparent 70%);
   will-change: transform;
   pointer-events: none;
 }
@@ -306,7 +306,7 @@ h1, h2, h3 {
   background: var(--accent-2);
   transform: translate(-50%, -50%);
   animation: scrub-head 7s ease-in-out infinite;
-  box-shadow: 0 0 0 4px rgba(43, 179, 163, 0.15);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
 }
 
 @keyframes scrub {
@@ -347,7 +347,7 @@ h1, h2, h3 {
   aspect-ratio: 4 / 5;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background: linear-gradient(160deg, #221a13, #0a0806);
+  background: linear-gradient(160deg, #1c1e2e, #0a0a10);
   padding: 28px;
   display: flex;
   flex-direction: column;
@@ -359,7 +359,7 @@ h1, h2, h3 {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(70% 60% at 70% 20%, rgba(43, 179, 163, 0.14), transparent 65%);
+  background: radial-gradient(70% 60% at 70% 20%, rgba(139, 92, 246, 0.14), transparent 65%);
 }
 
 .waveform-label {
@@ -515,14 +515,14 @@ h1, h2, h3 {
   width: 46px;
   height: 46px;
   border-radius: var(--radius);
-  background: rgba(255, 106, 61, 0.12);
+  background: rgba(63, 140, 255, 0.12);
   color: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
 }
-.service-card:nth-child(2) .service-icon { background: rgba(43, 179, 163, 0.14); color: var(--accent-2); }
+.service-card:nth-child(2) .service-icon { background: rgba(139, 92, 246, 0.14); color: var(--accent-2); }
 .service-icon svg { width: 24px; height: 24px; }
 
 .service-card h3 {
@@ -576,7 +576,7 @@ h1, h2, h3 {
   aspect-ratio: 16 / 10;
   background:
     repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 26px),
-    linear-gradient(135deg, #221a13, #0d0b09);
+    linear-gradient(135deg, #1c1e2e, #0c0c14);
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -586,9 +586,9 @@ h1, h2, h3 {
 
 .work-thumb--featured {
   background:
-    repeating-linear-gradient(115deg, rgba(255,106,61,0.05) 0 2px, transparent 2px 26px),
-    radial-gradient(70% 70% at 30% 20%, rgba(255, 106, 61, 0.16), transparent 60%),
-    linear-gradient(135deg, #221a13, #0d0b09);
+    repeating-linear-gradient(115deg, rgba(63,140,255,0.05) 0 2px, transparent 2px 26px),
+    radial-gradient(70% 70% at 30% 20%, rgba(63, 140, 255, 0.16), transparent 60%),
+    linear-gradient(135deg, #1c1e2e, #0c0c14);
   align-items: center;
   justify-content: center;
 }
@@ -670,44 +670,106 @@ h1, h2, h3 {
 }
 
 /* ============ Process / Roadmap ============ */
-.process { padding: 0 0 120px; }
+.process { position: relative; padding: 0 0 120px; overflow: hidden; }
+
+.process-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(45% 35% at 50% 0%, rgba(139, 92, 246, 0.1), transparent 70%);
+  will-change: transform;
+  pointer-events: none;
+}
 
 .roadmap {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Connector segments live only in the gap between two nodes — never behind a node */
-.roadmap-connector {
   position: relative;
-  margin-left: 27px;
-  width: 2px;
-  height: 40px;
-  background: var(--border);
+  z-index: 1;
 }
 
-.roadmap-connector-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background: linear-gradient(var(--accent), var(--accent-2));
-  transition: height 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+/* ---- Desktop: winding zigzag path, nodes alternate edges ---- */
+@media (min-width: 901px) {
+  .roadmap-step {
+    position: relative;
+    min-height: 260px;
+  }
+  .roadmap-step:last-child { min-height: 56px; }
+
+  .roadmap-node-wrap { position: absolute; top: 0; z-index: 2; }
+  .roadmap-step:nth-child(odd) .roadmap-node-wrap { left: 0; }
+  .roadmap-step:nth-child(even) .roadmap-node-wrap { right: 0; }
+
+  /* Small pointer triangle on the node, aimed at its content — echoes the play-button motif */
+  .roadmap-node-wrap::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    transform: translateY(-50%);
+  }
+  .roadmap-step:nth-child(odd) .roadmap-node-wrap::after {
+    left: 100%;
+    border-left: 9px solid var(--border);
+  }
+  .roadmap-step:nth-child(even) .roadmap-node-wrap::after {
+    right: 100%;
+    border-right: 9px solid var(--border);
+  }
+  .roadmap-step.is-visible:nth-child(odd) .roadmap-node-wrap::after { border-left-color: var(--accent); }
+  .roadmap-step.is-visible:nth-child(even) .roadmap-node-wrap::after { border-right-color: var(--accent); }
+
+  .roadmap-content {
+    position: absolute;
+    top: 2px;
+    max-width: 420px;
+  }
+  .roadmap-step:nth-child(odd) .roadmap-content { left: 88px; }
+  .roadmap-step:nth-child(even) .roadmap-content { right: 88px; }
+
+  .roadmap-elbow { position: absolute; top: 56px; height: 232px; width: calc(100% - 56px); overflow: visible; }
+  .roadmap-step:nth-child(odd) .roadmap-elbow { left: 28px; }
+  .roadmap-step:nth-child(even) .roadmap-elbow { right: 28px; }
+
+  .elbow-track, .elbow-fill {
+    fill: none;
+    stroke-width: 3;
+  }
+  .elbow-track { stroke: var(--border); }
+  .elbow-fill { stroke: var(--accent-2); }
 }
 
-.roadmap-connector.is-filled .roadmap-connector-fill { height: 100%; }
+/* ---- Mobile / tablet: simple stacked list with straight connectors ---- */
+@media (max-width: 900px) {
+  .roadmap-elbow, .roadmap-node-wrap::after { display: none; }
+  .roadmap-step {
+    position: relative;
+    padding-left: 88px;
+    min-height: 56px;
+  }
+  .roadmap-node-wrap { position: absolute; left: 0; top: 0; }
+  .roadmap-content { position: static; }
 
-.roadmap-step {
-  position: relative;
-  padding-left: 88px;
-  min-height: 56px;
+  .roadmap-connector {
+    position: relative;
+    margin-left: 27px;
+    width: 2px;
+    height: 40px;
+    background: var(--border);
+  }
+  .roadmap-connector-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(var(--accent), var(--accent-2));
+    transition: height 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .roadmap-connector.is-filled .roadmap-connector-fill { height: 100%; }
 }
 
 .roadmap-node {
-  position: absolute;
-  left: 0;
-  top: 0;
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -717,6 +779,8 @@ h1, h2, h3 {
   align-items: center;
   justify-content: center;
   color: var(--text-muted);
+  position: relative;
+  z-index: 2;
   transition: border-color 0.4s ease, color 0.4s ease, background 0.4s ease;
 }
 .roadmap-node svg { width: 22px; height: 22px; }
@@ -724,7 +788,7 @@ h1, h2, h3 {
 .roadmap-step.is-visible .roadmap-node {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(255, 106, 61, 0.1);
+  background: rgba(63, 140, 255, 0.1);
 }
 
 .roadmap-num {
@@ -741,7 +805,7 @@ h1, h2, h3 {
   margin: 8px 0 8px;
   font-weight: 700;
 }
-.roadmap-step p { color: var(--text-muted); font-size: 0.95rem; max-width: 560px; }
+.roadmap-step p { color: var(--text-muted); font-size: 0.95rem; }
 
 /* ============ About ============ */
 .about { padding: 0 0 120px; }
@@ -758,8 +822,8 @@ h1, h2, h3 {
   aspect-ratio: 4 / 5;
   border-radius: var(--radius);
   background:
-    radial-gradient(80% 80% at 30% 20%, rgba(255, 106, 61, 0.2), transparent 60%),
-    linear-gradient(160deg, #221a13, #0a0806);
+    radial-gradient(80% 80% at 30% 20%, rgba(63, 140, 255, 0.2), transparent 60%),
+    linear-gradient(160deg, #1c1e2e, #0a0a10);
   border: 1px solid var(--border);
   padding: 28px;
   display: flex;
