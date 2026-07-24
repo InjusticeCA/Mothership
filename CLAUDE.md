@@ -45,3 +45,9 @@ Everything lives in these three files — there's no componentization or templat
 ## Deployment
 
 Static site — any static host works with zero build configuration (Vercel/Netlify with repo root as output directory, or GitHub Pages pointed at `main`).
+
+## Claude Code setup in this repo
+
+- `.claude/settings.json` — allowlists read-only/inspection commands (git status/diff/log, the preview server) and denies destructive git/shell commands, plus a SessionStart hook.
+- `.claude/hooks/session-start.sh` — runs at session start and reports how many `<!-- EDIT ME -->` placeholders remain in `index.html`.
+- `.claude/commands/` — project slash commands mirroring the README workflows: `/preview` (start the local server), `/edit-me` (list outstanding placeholders), `/launch-check` (run the "before going live" checklist).
